@@ -1,0 +1,59 @@
+//
+// Prefix header for all source files of the 'ViewWorld' target in the 'ViewWorld' project
+//
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+    #import <CoreData/CoreData.h>
+#endif
+
+#import "StringViewController.h"
+#import "IntViewController.h"
+#import "DateViewController.h"
+#import "DateTimeViewController.h"
+#import "SelectViewController.h"
+#import "Select1ViewController.h"
+#import "GPSViewController.h"
+#import "ImageViewController.h"
+#import "UnknownObjectViewController.h"
+#import "FormDoneViewController.h"
+#import "DecimalViewController.h"
+#import "TitleViewController.h"
+#import "AudioViewController.h"
+#import "VideoViewController.h"
+
+#import "Report.h"
+#import "Entry.h"
+
+//DEBUG
+//#define DEBUG
+
+//URLs
+
+#ifdef DEBUG
+#define kServerUrl @"https://test.viewworld.dk/formList"
+#define kUploadUrl @"https://test.viewworld.dk/submission"
+#else
+#define kServerUrl @"https://viewworld.dk/formList"
+#define kUploadUrl @"https://viewworld.dk/submission"
+#endif
+
+#define kInfoUrl @"http://viewworld.dk/"
+#define CRASH_REPORTER_URL [NSURL URLWithString:@"http://hugelawn.com/bandicoot/crash_v200.php"]
+
+//Keys
+#define kUsernameKey @"kUsernameKey"
+#define kPasswordKey @"kPasswordKey"
+#define kTwitterKey @"kTwitterKey"
+#define kFacebookKey @"kFacebookKey"
+#define kFormListFilePath @"FormList.plist"
+
+#define kUploadUrlKey @"kUploadUrlKey"
+#define kFormlistUrlKey @"kFormlistUrlKey"
