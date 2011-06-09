@@ -32,8 +32,8 @@
 #import "Report.h"
 #import "Entry.h"
 
-#define kServerUrl @"https://viewworld.dk/formList"
-#define kUploadUrl @"https://viewworld.dk/submission"
+#define kServerUrl @"https://test.viewworld.dk/formList"
+#define kUploadUrl @"https://test.viewworld.dk/submission"
 #define kInfoUrl @"http://viewworld.dk"
 #define CRASH_REPORTER_URL [NSURL URLWithString:@"http://hugelawn.com/bandicoot/crash_v200.php"]
 
