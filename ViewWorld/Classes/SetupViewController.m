@@ -125,11 +125,13 @@
 	uploadUrlField.delegate = self;
 	uploadUrlField.autocorrectionType = UITextAutocorrectionTypeNo;
 	
-	/*[view addSubview:formlistLabel];
+#ifdef DEBUG
+    [view addSubview:formlistLabel];
 	[view addSubview:formlistUrlField];
 	[view addSubview:uploadLabel];
-	[view addSubview:uploadUrlField];*/
-	
+	[view addSubview:uploadUrlField];
+#endif
+    
 	[formlistLabel release];
 	[uploadLabel release];
 	

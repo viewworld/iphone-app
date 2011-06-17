@@ -41,8 +41,10 @@
 	[imageButton addTarget:self action:@selector(imageButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 	[imageButton setTitle:@"Start camera" forState:UIControlStateNormal];
 	
+	//imageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 150, 120, 160)];
 	imageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 150, 120, 160)];
-	Entry *thisEntry = [currentReport.entries objectAtIndex:index];
+    
+    Entry *thisEntry = [currentReport.entries objectAtIndex:index];
 	if (thisEntry.imageData != nil) {
 		UIImage *thisImage = [[UIImage alloc] initWithData:thisEntry.imageData];
 		imageView.image = thisImage;
