@@ -18,6 +18,7 @@
     //MPMoviePlayerViewController *moviePlayerVC;
     UIButton *playSavedMovieButton;
     UIButton *videoButton;
+    UIButton *videoRollButton;
     
     NSURL *currentUrl;
 }

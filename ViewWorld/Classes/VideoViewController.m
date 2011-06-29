@@ -15,18 +15,6 @@
 
 @synthesize currentUrl;
 
-/*-(void)moviePlayerCallback:(NSNotification*)aNotification{
-    NSLog(@"notif name: %@", aNotification.name);
-    MPMoviePlayerController *aMoviePlayer = [aNotification object];
-    //[aMoviePlayer stop];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name: MPMoviePlayerPlaybackDidFinishNotification object:aMoviePlayer];
-    
-    //[aMoviePlayer release];
-    //[self dismissModalViewControllerAnimated:YES];
-    //[moviePlayerVC release];
-}*/
-
 -(void)playSavedMovieButtonPressed{
     // Register for the playback finished notification
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerCallback:) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayer];
@@ -39,23 +27,7 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [self presentModalViewController:moviePlayerVC animated:YES];
     [moviePlayerVC release];
-    
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerCallback:) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayerVC.moviePlayer];
-    
-    
-    //[aMoviePlayer play];
-    //aMoviePlayer.fullscreen = YES;
-    
-    /*MPMoviePlayerController *aMoviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:self.currentUrl];
-    aMoviePlayer.scalingMode = MPMovieScalingModeAspectFill;
-    aMoviePlayer.view.frame = CGRectMake(160, 133, 0, 0);
-    [self.view addSubview:aMoviePlayer.view];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerCallback:) name:MPMoviePlayerDidExitFullscreenNotification object:aMoviePlayer];
-    
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [aMoviePlayer play];
-    aMoviePlayer.fullscreen = YES;*/
+  
 }
 
 -(NSString *)videoFilePath{
@@ -84,7 +56,7 @@
 
 -(void)videoButtonPressed{
 	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES){
-        if (!imagePicker) {
+        //if (!imagePicker) {
             
             NSArray *array = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
             if ([array containsObject:(NSString *)kUTTypeMovie]) {
@@ -102,53 +74,74 @@
                 return;
             }
             
-        }
+        //}
 		[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
 		[self presentModalViewController:imagePicker animated:YES];
 		
 	}else {
 		NSLog(@"camera not available");
-	}
-    
-}
-/*
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-}
-
--(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-	UIInterfaceOrientation orientation = self.interfaceOrientation;
-	if (orientation == UIInterfaceOrientationPortrait) {
-		NSLog(@"portrait");
-
-	}else {
-		NSLog(@"landscape");
-
-	}
 	
-}*/
+    }
+}
+
+-(void)videoRollButtonPressed{
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum] == YES){
+        //if (!imagePicker) {
+            NSArray *array = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+            if ([array containsObject:(NSString *)kUTTypeMovie]) {
+                imagePicker = [[UIImagePickerController alloc] init]; 
+                imagePicker.delegate = self;
+                imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+                imagePicker.allowsEditing = NO;
+                //imagePicker.showsCameraControls = NO;
+                imagePicker.mediaTypes = [NSArray arrayWithObject:(NSString *)kUTTypeMovie];
+            }
+            else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No video recording" message:@"This device does not support video recording." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                [alert show];
+                [alert release];
+                return;
+            }
+            
+        //}
+		[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+		[self presentModalViewController:imagePicker animated:YES];
+		
+	}else {
+		NSLog(@"camera roll not available");
+        
+    }
+}
+
 
 #pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad{
     videoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	videoButton.frame = CGRectMake(50, 100, 220, 40);
+	videoButton.frame = CGRectMake(10, 100, 300, 40);
 	[videoButton addTarget:self action:@selector(videoButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:videoButton];
     
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(80, 200, 160, 160)];//CGRectMake(100, 200, 120, 160)
+    videoRollButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	videoRollButton.frame = CGRectMake(10, 150, 300, 40);
+	[videoRollButton addTarget:self action:@selector(videoRollButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:videoRollButton];
+    
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70, 250, 180, 110)];//CGRectMake(100, 200, 120, 160)
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     
     playSavedMovieButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [playSavedMovieButton setTitle:@"Play saved video" forState:UIControlStateNormal];
     [playSavedMovieButton addTarget:self action:@selector(playSavedMovieButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    playSavedMovieButton.frame = CGRectMake(50, 150, 220, 40);
+    playSavedMovieButton.frame = CGRectMake(70, 200, 180, 40);
     [self.view addSubview:playSavedMovieButton];
     
     Entry *thisEntry = [currentReport.entries objectAtIndex:index];
     if([thisEntry.videoData length] > 0){
         [videoButton setTitle:@"Record new video" forState:UIControlStateNormal];
+        [videoRollButton setTitle:@"Choose new video from roll" forState:UIControlStateNormal];
         [thisEntry.videoData writeToFile:[self videoFilePath] atomically:YES];
         self.currentUrl = [NSURL fileURLWithPath:[self videoFilePath]];
         MPMoviePlayerController *aMoviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:self.currentUrl];
@@ -157,6 +150,7 @@
         [aMoviePlayer release];
     }else{
         [videoButton setTitle:@"Start video recorder" forState:UIControlStateNormal];
+        [videoRollButton setTitle:@"Choose video from roll" forState:UIControlStateNormal];
         playSavedMovieButton.hidden = YES;
     }
     
@@ -193,18 +187,9 @@
     aMoviePlayer.shouldAutoplay = NO;
     imageView.image = [aMoviePlayer thumbnailImageAtTime:0.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
     [aMoviePlayer release];
-    /*
-    moviePlayer = nil;
-    [moviePlayer release];
-    moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:movieUrl];
-    moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
-    //moviePlayer.controlStyle = MPMovieControlStyleNone;
-    imageView.image = [moviePlayer thumbnailImageAtTime:0.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
-    moviePlayer.view.tag = kMoviePlayerTag;
-    [self.view addSubview:moviePlayer.view];
-    */
     playSavedMovieButton.hidden = NO;
     [videoButton setTitle:@"Record new video" forState:UIControlStateNormal];
+    [videoRollButton setTitle:@"Choose new video from roll" forState:UIControlStateNormal];
     
 	[self dismissModalViewControllerAnimated:YES];
 }
