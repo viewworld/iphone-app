@@ -200,12 +200,9 @@
 #pragma mark -
 #pragma mark Table View Data Source Methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	ViewWorldAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-	if ([delegate.reports count] > 0) {
-		return 2;
-	}else{
-		return 1;
-	}
+	//In this case only return 1, as the templates should be invisible
+    return 1;
+	
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
