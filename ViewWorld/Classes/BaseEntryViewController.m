@@ -220,6 +220,10 @@
     [super viewDidLoad];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self addValue];
+}
+
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
