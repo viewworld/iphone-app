@@ -33,7 +33,7 @@
 #import "Entry.h"
 
 //DEBUG
-#define DEBUG
+//#define DEBUG
 
 //URLs
 
@@ -45,7 +45,7 @@
 #define kUploadUrl @"https://viewworld.dk/submission"
 #endif
 
-#define kInfoUrl @"http://viewworld.dk"
+#define kInfoUrl @"http://viewworld.dk/i/update"
 #define CRASH_REPORTER_URL [NSURL URLWithString:@"http://hugelawn.com/bandicoot/crash_v200.php"]
 
 //Keys
