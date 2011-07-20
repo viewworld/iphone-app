@@ -113,33 +113,33 @@
 	//newReportViewController = [[NewReportViewController alloc] init];
 	//newReportViewController.title = @"New Report"
 	selectFormViewController = [[SelectFormViewController alloc] init];
-	selectFormViewController.title = @"New Report";
+	selectFormViewController.title = NSLocalizedString(@"New Report", @"selectFormViewController_title");
 	UINavigationController *newReportNavController = [[UINavigationController alloc] initWithRootViewController:selectFormViewController];
-	newReportNavController.tabBarItem.title = @"New";
+	newReportNavController.tabBarItem.title = NSLocalizedString(@"New", @"selectFormViewController_tabbar_title");
 	newReportNavController.tabBarItem.image = [UIImage imageNamed:@"new_icon.png"];
 	
 	manageReportViewController = [[ManageReportViewController alloc] init];
-	manageReportViewController.title = @"Manage Reports";
+	manageReportViewController.title = NSLocalizedString(@"Manage Reports", @"manageReportViewController_title");
 	UINavigationController *manageReportNavController = [[UINavigationController alloc] initWithRootViewController:manageReportViewController];
-	manageReportNavController.tabBarItem.title = @"Manage";
+	manageReportNavController.tabBarItem.title = NSLocalizedString(@"Manage", @"manageReportViewController_tabbar_title");
 	manageReportNavController.tabBarItem.image = [UIImage imageNamed:@"manage_icon.png"];
     
 	viewReportViewController = [[ViewReportViewController alloc] init];
-	viewReportViewController.title = @"View Report";
+	viewReportViewController.title = NSLocalizedString(@"View Report", @"viewReportViewController_title");
 	UINavigationController *viewReportNavController = [[UINavigationController alloc] initWithRootViewController:viewReportViewController];
-	viewReportNavController.tabBarItem.title = @"View";
+	viewReportNavController.tabBarItem.title = NSLocalizedString(@"View", @"viewReportViewController_tabbar_title");
 	viewReportNavController.tabBarItem.image = [UIImage imageNamed:@"view_icon"];
 	
 	setupViewController = [[SetupViewController alloc] init];
-	setupViewController.title = @"Setup";
+	setupViewController.title = NSLocalizedString(@"Setup", @"setupViewController_title");
 	UINavigationController *setupNavController = [[UINavigationController alloc] initWithRootViewController:setupViewController];
-	setupNavController.tabBarItem.title = @"Setup";
+	setupNavController.tabBarItem.title = NSLocalizedString(@"Setup", @"setupViewController_tabbar_title");
 	setupNavController.tabBarItem.image = [UIImage imageNamed:@"setup_icon.png"];
 	
 	infoViewController = [[InfoViewController alloc] init];
-	infoViewController.title = @"Info";
+	infoViewController.title = NSLocalizedString(@"Info", @"inforViewController_title");
 	UINavigationController *infoNavController = [[UINavigationController alloc] initWithRootViewController:infoViewController];
-	infoNavController.tabBarItem.title = @"Info";
+	infoNavController.tabBarItem.title = NSLocalizedString(@"Info", @"infoViewController_tabbar_title");
 	infoNavController.tabBarItem.image = [UIImage imageNamed:@"info_icon.png"];
 	
 	tabBarController.viewControllers = [NSArray arrayWithObjects:infoNavController, newReportNavController, viewReportNavController, manageReportNavController,setupNavController, nil];
@@ -247,7 +247,11 @@
 - (BOOL)tabBarController:(UITabBarController *)tempTabBarController shouldSelectViewController:(UIViewController *)viewController{
 	if (tabBarController.selectedIndex == 1) {
 		if (![[selectFormViewController.navigationController topViewController] isKindOfClass:[SelectFormViewController class]]) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"Leaving this tab while entering a new report will discard the data you have entered. Are you sure you wish to leave this tab?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", nil];
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning!", @"tabbar_tab_switch_alert_title") 
+                                                            message:NSLocalizedString(@"Leaving this tab while entering a new report will discard the data you have entered. Are you sure you wish to leave this tab?", @"tabbar_tab_switch_message") 
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"tabbar_tab_switch_cancel") 
+                                                  otherButtonTitles:NSLocalizedString(@"Continue", @"tabbar_tab_switch_continue"), nil];
 			[alert show];
 			[alert release];
 			nextViewController = viewController;
@@ -263,12 +267,11 @@
 
 #pragma mark UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Continue"]) {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([alertView cancelButtonIndex] != buttonIndex) {
 		//download forms alert
-		tabBarController.selectedViewController = nextViewController;
-		
-	}
+		tabBarController.selectedViewController = nextViewController;		
+    }
 	nextViewController = nil;
 }
 

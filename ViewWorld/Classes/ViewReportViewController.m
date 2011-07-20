@@ -19,7 +19,7 @@
 	[unfinishedReportsVC release];*/
 	FilledReportsViewController *finishedReportsVC = [[FilledReportsViewController alloc] init];
 	finishedReportsVC.isFinished = NO;
-	finishedReportsVC.title = @"Unfinished reports";
+	finishedReportsVC.title = NSLocalizedString(@"Unfinished reports",@"filledReportsViewController_title");
 	[self.navigationController pushViewController:finishedReportsVC animated:YES];
 	[finishedReportsVC release];
 }
@@ -27,7 +27,7 @@
 -(void)viewFinishedReports{
 	FilledReportsViewController *finishedReportsVC = [[FilledReportsViewController alloc] init];
 	finishedReportsVC.isFinished = YES;
-	finishedReportsVC.title = @"Finished reports";
+	finishedReportsVC.title = NSLocalizedString(@"Finished reports", @"filledReportsViewController_title");
 	[self.navigationController pushViewController:finishedReportsVC animated:YES];
 	[finishedReportsVC release];
 }
@@ -39,17 +39,17 @@
 	
 	UILabel *reportLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
 	reportLabel.backgroundColor = [UIColor clearColor];
-	reportLabel.text = @"Reports:";
+	reportLabel.text = NSLocalizedString(@"Reports:", @"reportLabel");
 	
 	UIButton *viewUnfinishedButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	viewUnfinishedButton.frame = CGRectMake(10, 50, 200, 40);
 	[viewUnfinishedButton addTarget:self action:@selector(viewUnfinishedReports) forControlEvents:UIControlEventTouchUpInside];
-	[viewUnfinishedButton setTitle:@"View unfinished reports" forState:UIControlStateNormal];
+	[viewUnfinishedButton setTitle:NSLocalizedString(@"View unfinished reports", @"viewUnfinishedButton_title") forState:UIControlStateNormal];
 	
 	UIButton *viewFinishedButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	viewFinishedButton.frame = CGRectMake(10, 100, 200, 40);
 	[viewFinishedButton addTarget:self action:@selector(viewFinishedReports) forControlEvents:UIControlEventTouchUpInside];
-	[viewFinishedButton setTitle:@"View finished reports" forState:UIControlStateNormal];
+	[viewFinishedButton setTitle:NSLocalizedString(@"View finished reports", @"viewFinishedButton_title") forState:UIControlStateNormal];
 	
 	[view addSubview:reportLabel];
 	[view addSubview:viewUnfinishedButton];

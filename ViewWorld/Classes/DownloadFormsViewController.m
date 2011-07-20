@@ -12,6 +12,11 @@
 #import "MBBase64.h"
 #import "FlurryAPI.h"
 
+typedef enum {
+    alertViewTypeInvalidUP = 1,
+    alertViewTypeWarning
+}alertViewType;
+
 @implementation DownloadFormsViewController
 
 @synthesize downloadedFormList;
@@ -87,14 +92,23 @@
 		}
 		
 		if (formExists) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"You already have one of the selected forms downloaded to your device. Redownloading existing forms will replace it and delete all unsend reports. Are you sure you want to download the new forms?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", nil];
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning!", @"downloadFormsViewController_alert_title") 
+                                                            message:NSLocalizedString(@"You already have one of the selected forms downloaded to your device. Redownloading existing forms will replace it and delete all unsend reports. Are you sure you want to download the new forms?", @"downloadFormsViewController_alert_message") 
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"downloadFormsViewController_alert_cancel") 
+                                                  otherButtonTitles:NSLocalizedString(@"Continue", @"downloadFormsViewController_alert_continue"), nil];
+            [alert setTag:alertViewTypeWarning];
 			[alert show];
 			[alert release];
 		}else {
 			if ([downloadArray count] > 0) {
 				[self downloadFormsByAdding];
 			}else {
-				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No selection" message:@"You have not selected any forms for download." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No selection", @"downloadFormsViewController_alert_title") 
+                                                                message:NSLocalizedString(@"You have not selected any forms for download.", @"downloadFormsViewController_alert_title") 
+                                                               delegate:nil 
+                                                      cancelButtonTitle:NSLocalizedString(@"Ok", @"downloadFormsViewController_alert_ok") 
+                                                      otherButtonTitles:nil];
 				[alert show];
 				[alert release];
 			}
@@ -111,7 +125,7 @@
 - (void)loadView {
 	UIView *view = [[UIView alloc] init];
 	
-	self.title = @"Download forms";
+	self.title = NSLocalizedString(@"Download forms", @"downloadFormsViewController_title");
 	
 	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) style:UITableViewStyleGrouped];
 	_tableView.delegate = self;
@@ -216,7 +230,12 @@
 	//NSLog(@"statuscode: %d", statuscode);
 	
 	if(statuscode == 500){
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Username/Password" message:@"The server could not validate your username or password. Please check your information in the \"Setup\" tab." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid Username/Password", @"downloadFormsViewController_alert_title") 
+                                                        message:NSLocalizedString(@"The server could not validate your username or password. Please check your information in the \"Setup\" tab.", @"downloadFormsViewController_alert_message") 
+                                                       delegate:self 
+                                              cancelButtonTitle:NSLocalizedString(@"Ok" ,@"downloadFormsViewController_alert_ok") 
+                                              otherButtonTitles:nil];
+        [alert setTag:alertViewTypeInvalidUP];
 		[alert show];
 		[alert release];
 	}
@@ -228,7 +247,12 @@
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	if([challenge previousFailureCount] > 3 || [userDefaults objectForKey:kUsernameKey] == nil){
 		[[challenge sender] cancelAuthenticationChallenge:challenge];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Username/Password" message:@"The server could not validate your username or password. Please check your information in the \"Setup\" tab." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid Username/Password" ,@"downloadFormsViewController_alert_title") 
+                                                        message:NSLocalizedString(@"The server could not validate your username or password. Please check your information in the \"Setup\" tab." ,@"downloadFormsViewController_alert_message") 
+                                                       delegate:self 
+                                              cancelButtonTitle:NSLocalizedString(@"Ok" ,@"downloadFormsViewController_alert_ok") 
+                                              otherButtonTitles:nil];
+        [alert setTag:alertViewTypeInvalidUP];
 		[alert show];
 		[alert release];
 	}
@@ -267,7 +291,7 @@
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	return @"Available forms on server";
+	return NSLocalizedString(@"Available forms on server", @"downloadFormsViewController_section_header_available_forms_on_server");
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -299,7 +323,7 @@
 		UIButton *downloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		downloadButton.frame = CGRectMake(10, 20, 300, 44);
 		[downloadButton addTarget:self action:@selector(downloadFormsAlert) forControlEvents:UIControlEventTouchUpInside];
-		[downloadButton setTitle:@"Download selected forms" forState:UIControlStateNormal];
+		[downloadButton setTitle:NSLocalizedString(@"Download selected forms", @"downloadFormsViewController_downloadButton_title") forState:UIControlStateNormal];
 		[view addSubview:downloadButton];
 		
 		return view;
@@ -309,14 +333,15 @@
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Continue"]) {
+    if ([alertView tag] == alertViewTypeWarning && [alertView cancelButtonIndex] != buttonIndex) {
 		//download forms alert
 		[self downloadFormsAndWipeExisting];
-	}else if([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Ok"]){
-		//incorrect username/password alert
+    }
+    else if ([alertView tag] == alertViewTypeInvalidUP && [alertView cancelButtonIndex] == buttonIndex) {
+        //incorrect username/password alert
 		self.navigationController.tabBarController.selectedIndex = 4;
 		[self.navigationController popViewControllerAnimated:NO];
-	}
+    }
 }
 
 #pragma mark FormDownloaderDelegate
