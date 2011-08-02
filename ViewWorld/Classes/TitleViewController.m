@@ -21,7 +21,7 @@
 	[self addValue];
 	FormDoneViewController *formDoneVC = [[FormDoneViewController alloc] init];
 	formDoneVC.currentReport = currentReport;
-	formDoneVC.title = @"Done";
+	formDoneVC.title = NSLocalizedString(@"Done", @"formDoneVC_title");
 	[self.navigationController pushViewController:formDoneVC animated:YES];
 	[formDoneVC release];
 }
@@ -43,59 +43,59 @@
 		
 		if ([type isEqualToString:@"string"]) {
 			StringViewController *stringVC = [[StringViewController alloc] initWithReport:currentReport andIndex:0];
-			stringVC.title = @"String";
+			stringVC.title = NSLocalizedString(@"String", @"stringVC_title");
 			[self.navigationController pushViewController:stringVC animated:YES];
 			[stringVC release];
 		}else if([type isEqualToString:@"int"]){
 			IntViewController *intVC = [[IntViewController alloc] initWithReport:currentReport andIndex:0];
-			intVC.title = @"Integer";
+			intVC.title = NSLocalizedString(@"Integer", @"intVC_title");
 			[self.navigationController pushViewController:intVC animated:YES];
 			[intVC release];
 		}else if([type isEqualToString:@"decimal"]){
 			DecimalViewController *decVC = [[DecimalViewController alloc] initWithReport:currentReport andIndex:0];
-			decVC.title = @"Decimal";
+			decVC.title = NSLocalizedString(@"Decimal", @"decVC_title");
 			[self.navigationController pushViewController:decVC animated:YES];
 			[decVC release];
 		}else if ([type isEqualToString:@"date"]) {
 			DateViewController *dateVC = [[DateViewController alloc] initWithReport:currentReport andIndex:0];
-			dateVC.title = @"Date";
+			dateVC.title = NSLocalizedString(@"Date", @"dateVC_title");
 			[self.navigationController pushViewController:dateVC animated:YES];
 			[dateVC release];
 		}else if ([type isEqualToString:@"dateTime"]) {
 			DateViewController *dateTimeVC = [[DateViewController alloc] initWithReport:currentReport andIndex:0];
-			dateTimeVC.title = @"Date and time";
+			dateTimeVC.title = NSLocalizedString(@"Date and time", @"dateTimeVC_title");
 			[self.navigationController pushViewController:dateTimeVC animated:YES];
 			[dateTimeVC release];
 		}else if ([type isEqualToString:@"select"]) {
 			SelectViewController *selectVC = [[SelectViewController alloc] initWithReport:currentReport andIndex:0];
-			selectVC.title = @"Select multiple";
+			selectVC.title = NSLocalizedString(@"Select multiple", @"selectVC_title");
 			[self.navigationController pushViewController:selectVC animated:YES];
 			[selectVC release];
 		}else if ([type isEqualToString:@"select1"]) {
 			Select1ViewController *select1VC = [[Select1ViewController alloc] initWithReport:currentReport andIndex:0];
 			[self.navigationController pushViewController:select1VC animated:YES];
-			select1VC.title = @"Select one";
+			select1VC.title = NSLocalizedString(@"Select one", @"select1VC_title");
 			[select1VC release];
 		}else if ([type isEqualToString:@"geopoint"]) {
 			GPSViewController *gpsVC = [[GPSViewController alloc] initWithReport:currentReport andIndex:0];
-			gpsVC.title = @"GPS";
+			gpsVC.title = NSLocalizedString(@"GPS", @"gpsVC_title");
 			[self.navigationController pushViewController:gpsVC animated:YES];
 			[gpsVC release];
 		}else if ([type isEqualToString:@"binary"]) {
 			ImageViewController *imageVC = [[ImageViewController alloc] initWithReport:currentReport andIndex:0];
-			imageVC.title = @"Image";
+			imageVC.title = NSLocalizedString(@"Image", @"imageVC_title");
 			[self.navigationController pushViewController:imageVC animated:YES];
 			[imageVC release];
 		}else {
 			UnknownObjectViewController *ukVC = [[UnknownObjectViewController alloc] initWithReport:currentReport andIndex:0];
-			ukVC.title = @"Unknown Type";
+			ukVC.title = NSLocalizedString(@"Unknown Type", @"ukVC_title");
 			[self.navigationController pushViewController:ukVC animated:YES];
 			[ukVC release];
 		}
 	}else {
 		FormDoneViewController *formDoneVC = [[FormDoneViewController alloc] init];
 		formDoneVC.currentReport = currentReport;
-		formDoneVC.title = @"Done";
+		formDoneVC.title = NSLocalizedString(@"Done", @"formDoneVC_title");
 		[self.navigationController pushViewController:formDoneVC animated:YES];
 		[formDoneVC release];
 	}
@@ -142,7 +142,7 @@
 	
 	UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
 	titleLabel.backgroundColor = [UIColor clearColor];
-	titleLabel.text = @"Set a title for this report";
+	titleLabel.text = NSLocalizedString(@"Set a title for this report", @"titleLabel");
 	
 	titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 60, 300, 30)];
 	titleTextField.borderStyle = UITextBorderStyleRoundedRect;

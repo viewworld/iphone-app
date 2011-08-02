@@ -8,6 +8,10 @@
 
 #import "BaseEntryViewController.h"
 
+typedef enum {
+    alertViewTypeWarning = 1,
+}alertViewType;
+
 @implementation BaseEntryViewController
 
 @synthesize label;
@@ -24,14 +28,23 @@
 }
 
 -(void)backButtonPressed{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"You are about to leave a new report without saving it. All entered data will be lost. Are you sure you want to leave the report?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Leave report", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning!", @"baseEntryViewController_alert_title") 
+                                                    message:NSLocalizedString(@"You are about to leave a new report without saving it. All entered data will be lost. Are you sure you want to leave the report?", @"baseEntryViewController_alert_message") 
+                                                   delegate:self 
+                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"baseEntryViewController_alert_cancel") 
+                                          otherButtonTitles:NSLocalizedString(@"Leave report", @"baseEntryViewController_alert_leave_report"), nil];
+    [alert setTag:alertViewTypeWarning];
     [alert show];
     [alert release];
 }
 
 -(void)notValidatedAlert{
     //NSLog(@"not validated");
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not a decimal!" message:@"You have not entered a valid decimal number. The valid decimal seperator is the period/'dot' (.) symbol." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not a decimal!", @"baseEntryViewController_alert_title") 
+                                                    message:NSLocalizedString(@"You have not entered a valid decimal number. The valid decimal seperator is the period/'dot' (.) symbol.", @"baseEntryViewController_alert_message") 
+                                                   delegate:nil 
+                                          cancelButtonTitle:NSLocalizedString(@"Ok", @"baseEntryViewController_alert_ok") 
+                                          otherButtonTitles:nil];
     [alert show];
     [alert release];
 }
@@ -41,7 +54,7 @@
     if (validated) {
         FormDoneViewController *formDoneVC = [[FormDoneViewController alloc] init];
         formDoneVC.currentReport = currentReport;
-        formDoneVC.title = @"Done";
+        formDoneVC.title = NSLocalizedString(@"Done", @"formDoneVC_title");
         [self.navigationController pushViewController:formDoneVC animated:YES];
         [formDoneVC release];
     }else  {
@@ -65,69 +78,69 @@
         
 		if ([type isEqualToString:@"string"]) {
 			StringViewController *stringVC = [[StringViewController alloc] initWithReport:currentReport andIndex:index+1];
-			stringVC.title = @"String";
+			stringVC.title = NSLocalizedString(@"String", @"stringVC_title");
 			[self.navigationController pushViewController:stringVC animated:YES];
 			[stringVC release];
 		}else if([type isEqualToString:@"int"]){
 			IntViewController *intVC = [[IntViewController alloc] initWithReport:currentReport andIndex:index+1];
-			intVC.title = @"Integer";
+			intVC.title = NSLocalizedString(@"Integer", @"intVC_title");
 			[self.navigationController pushViewController:intVC animated:YES];
 			[intVC release];
 		}else if([type isEqualToString:@"decimal"]){
 			DecimalViewController *decVC = [[DecimalViewController alloc] initWithReport:currentReport andIndex:index+1];
-			decVC.title = @"Decimal";
+			decVC.title = NSLocalizedString(@"Decimal", @"decVC_title");
 			[self.navigationController pushViewController:decVC animated:YES];
 			[decVC release];
 		}else if ([type isEqualToString:@"date"]) {
 			DateViewController *dateVC = [[DateViewController alloc] initWithReport:currentReport andIndex:index+1];
-			dateVC.title = @"Date";
+			dateVC.title = NSLocalizedString(@"Date", @"dateVC_title");
 			[self.navigationController pushViewController:dateVC animated:YES];
 			[dateVC release];
 		}else if ([type isEqualToString:@"dateTime"]) {
 			DateTimeViewController *dateTimeVC = [[DateTimeViewController alloc] initWithReport:currentReport andIndex:index+1];
-			dateTimeVC.title = @"Date and time";
+			dateTimeVC.title = NSLocalizedString(@"Date and time", @"dateTimeVC_title");
 			[self.navigationController pushViewController:dateTimeVC animated:YES];
 			[dateTimeVC release];
 		}else if ([type isEqualToString:@"select"]) {
 			SelectViewController *selectVC = [[SelectViewController alloc] initWithReport:currentReport andIndex:index+1];
-			selectVC.title = @"Select multiple";
+			selectVC.title = NSLocalizedString(@"Select multiple", @"selectVC_title");
 			[self.navigationController pushViewController:selectVC animated:YES];
 			[selectVC release];
 		}else if ([type isEqualToString:@"select1"]) {
 			Select1ViewController *select1VC = [[Select1ViewController alloc] initWithReport:currentReport andIndex:index+1];
 			[self.navigationController pushViewController:select1VC animated:YES];
-			select1VC.title = @"Select one";
+			select1VC.title = NSLocalizedString(@"Select one", @"select1VC_title");
 			[select1VC release];
 		}else if ([type isEqualToString:@"geopoint"]) {
 			GPSViewController *gpsVC = [[GPSViewController alloc] initWithReport:currentReport andIndex:index+1];
-			gpsVC.title = @"GPS";
+			gpsVC.title = NSLocalizedString(@"GPS", @"gpsVC_title");
 			[self.navigationController pushViewController:gpsVC animated:YES];
 			[gpsVC release];
 		}else if ([type isEqualToString:@"imageType"]) {
 			ImageViewController *imageVC = [[ImageViewController alloc] initWithReport:currentReport andIndex:index+1];
-			imageVC.title = @"Image";
+			imageVC.title = NSLocalizedString(@"Image", @"imageVC_title");
 			[self.navigationController pushViewController:imageVC animated:YES];
 			[imageVC release];
 		}else if ([type isEqualToString:@"audioType"]) {
 			AudioViewController *audioVC = [[AudioViewController alloc] initWithReport:currentReport andIndex:index+1];
-			audioVC.title = @"Audio";
+			audioVC.title = NSLocalizedString(@"Audio", @"audioVC_title");
 			[self.navigationController pushViewController:audioVC animated:YES];
 			[audioVC release];
 		}else if ([type isEqualToString:@"videoType"]) {
 			VideoViewController *videoVC = [[VideoViewController alloc] initWithReport:currentReport andIndex:index+1];
-			videoVC.title = @"Video";
+			videoVC.title = NSLocalizedString(@"Video", @"videoVC_title");
 			[self.navigationController pushViewController:videoVC animated:YES];
 			[videoVC release];
 		}else {
 			UnknownObjectViewController *ukVC = [[UnknownObjectViewController alloc] initWithReport:currentReport andIndex:index+1];
-			ukVC.title = @"Unknown Type";
+			ukVC.title = NSLocalizedString(@"Unknown Type", @"ukVC_title");
 			[self.navigationController pushViewController:ukVC animated:YES];
 			[ukVC release];
 		}
 	}else if(self.validated){
 		FormDoneViewController *formDoneVC = [[FormDoneViewController alloc] init];
 		formDoneVC.currentReport = currentReport;
-		formDoneVC.title = @"Done";
+		formDoneVC.title = NSLocalizedString(@"Done", @"formDoneVC_title");
 		[self.navigationController pushViewController:formDoneVC animated:YES];
 		[formDoneVC release];
 	}else{
@@ -181,7 +194,7 @@
     
     if ([self.navigationController.viewControllers count] == 2) {
         self.navigationItem.backBarButtonItem = nil;
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(backButtonPressed)];
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"backButton") style:UIBarButtonItemStyleBordered target:self action:@selector(backButtonPressed)];
         self.navigationItem.leftBarButtonItem = backButton;
         [backButton release];
     }
@@ -254,9 +267,10 @@
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Leave report"]) {
+    if ([alertView tag] == alertViewTypeWarning && [alertView cancelButtonIndex] != buttonIndex) {
 		[self.navigationController popViewControllerAnimated:YES];
-	}else {
+    }
+    else {
         //NSLog(@"ignoring");
     }
 }

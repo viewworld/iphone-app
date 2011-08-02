@@ -44,24 +44,24 @@
 	
 	UILabel *usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 20)];
 	usernameLabel.backgroundColor = [UIColor clearColor];
-	usernameLabel.text = @"Username:";
+	usernameLabel.text = NSLocalizedString(@"Username:", @"usernameLabel");
 	
 	usernameField = [[UITextField alloc] initWithFrame:CGRectMake(10, 40, 200, 30)];
 	usernameField.borderStyle = UITextBorderStyleRoundedRect;
 	usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-	usernameField.placeholder = @"Username";
+	usernameField.placeholder = NSLocalizedString(@"Username", @"usernameField");
 	usernameField.text = [userDefaults objectForKey:kUsernameKey];
 	usernameField.delegate = self;
 	usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
 	
 	UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 80, 300, 20)];
 	passwordLabel.backgroundColor = [UIColor clearColor];
-	passwordLabel.text = @"Password:";
+	passwordLabel.text = NSLocalizedString(@"Password:", @"passwordLabel");
 	
 	passwordField = [[UITextField alloc] initWithFrame:CGRectMake(10, 110, 200, 30)];
 	passwordField.borderStyle = UITextBorderStyleRoundedRect;
 	passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-	passwordField.placeholder = @"Password";
+	passwordField.placeholder = NSLocalizedString(@"Password", @"passwordField");
 	passwordField.text = [userDefaults objectForKey:kPasswordKey];
 	passwordField.secureTextEntry = YES;
 	passwordField.delegate = self;
@@ -73,7 +73,7 @@
 	
 	UILabel *facebookLabel = [[UILabel alloc] initWithFrame:CGRectMake(114, 160, 196, 27)];
 	facebookLabel.backgroundColor = [UIColor clearColor];
-	facebookLabel.text = @"Facebook";
+	facebookLabel.text = NSLocalizedString(@"Facebook", @"facebookLabel");
 	
 	twitterSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(10, 202, 94, 27)];
 	[twitterSwitch addTarget:self action:@selector(socialMediaSwitchChanged:) forControlEvents:UIControlEventValueChanged];
@@ -81,7 +81,7 @@
 	
 	UILabel *twitterLabel = [[UILabel alloc] initWithFrame:CGRectMake(114, 202, 196, 27)];
 	twitterLabel.backgroundColor = [UIColor clearColor];
-	twitterLabel.text = @"Twitter";
+	twitterLabel.text = NSLocalizedString(@"Twitter", @"twitterLabel");
 	
 	[view addSubview:usernameLabel];
 	[view addSubview:usernameField];
@@ -103,11 +103,11 @@
 	//Temp url fields
 	UILabel *formlistLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 150, 300, 20)];
 	formlistLabel.backgroundColor = [UIColor clearColor];
-	formlistLabel.text = @"Formlist URL (DEBUG):";
+	formlistLabel.text = NSLocalizedString(@"Formlist URL (DEBUG):", @"formListLabel");
 	
 	UILabel *uploadLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 220, 300, 20)];
 	uploadLabel.backgroundColor = [UIColor clearColor];
-	uploadLabel.text = @"Upload URL (DEBUG):";
+	uploadLabel.text = NSLocalizedString(@"Upload URL (DEBUG):", @"uploadLabel");
 	
 	formlistUrlField = [[UITextField alloc] initWithFrame:CGRectMake(10, 180, 300, 30)];
 	formlistUrlField.borderStyle = UITextBorderStyleRoundedRect;

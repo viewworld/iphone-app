@@ -8,6 +8,10 @@
 
 #import "GPSViewController.h"
 
+typedef enum {
+    gpsButtonStateStopped = 0,
+    gpsButtonStateStarted,
+}gpsButtonState;
 
 @implementation GPSViewController
 
@@ -16,19 +20,19 @@
 @synthesize gpsButton;
 @synthesize latLabel, lngLabel;
 
--(void)startGPS{
-	if ([[gpsButton titleForState:UIControlStateNormal] isEqualToString:@"Start recording"] || [[gpsButton titleForState:UIControlStateNormal] isEqualToString:@"Record new coordinate"]) {
-		_mapView.showsUserLocation = YES;
+-(void)startGPS {
+    if (gpsButton.tag == gpsButtonStateStopped) {
+        _mapView.showsUserLocation = YES;
 		[_mapView.userLocation addObserver:self forKeyPath:@"location" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
-		[gpsButton setTitle:@"Save recording" forState:UIControlStateNormal];
-	}else {
+		[gpsButton setTitle:NSLocalizedString(@"Save recording", @"gpsButton_title_save_recording") forState:UIControlStateNormal];
+        gpsButton.tag = gpsButtonStateStarted;
+    }
+    else {
 		_mapView.showsUserLocation = NO;
 		[_mapView.userLocation removeObserver:self forKeyPath:@"location"];
-		[gpsButton setTitle:@"Record new coordinate" forState:UIControlStateNormal];
+		[gpsButton setTitle:NSLocalizedString(@"Record new coordinate", @"gpsButton_title_new_recording") forState:UIControlStateNormal];
+        gpsButton.tag = gpsButtonStateStopped;
 	}
-
-	
-	
 }
 
 -(void)addValue{
@@ -55,8 +59,8 @@
 		accuracyLabel.backgroundColor = [UIColor redColor];
 	}
 	
-	latLabel.text = [NSString stringWithFormat:@"Lat: %f", _mapView.userLocation.location.coordinate.latitude];
-	lngLabel.text = [NSString stringWithFormat:@"Lng: %f", _mapView.userLocation.location.coordinate.longitude];
+	latLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Lat: %f", @"latLabel"), _mapView.userLocation.location.coordinate.latitude];
+	lngLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Lng: %f", @"lngLabel"), _mapView.userLocation.location.coordinate.longitude];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -64,7 +68,8 @@
 		//NSLog(@"stopping gps");
 		_mapView.showsUserLocation = NO;
 		[_mapView.userLocation removeObserver:self forKeyPath:@"location"];
-		[gpsButton setTitle:@"Record new coordinate" forState:UIControlStateNormal];
+		[gpsButton setTitle:NSLocalizedString(@"Record new coordinate", @"gpsButton_title_new_recording") forState:UIControlStateNormal];
+        gpsButton.tag = gpsButtonStateStopped;
 	}
 	receivedNewPos = NO;
 	[super viewWillDisappear:YES];
@@ -81,7 +86,7 @@
 	receivedNewPos = NO;
 	
 	UILabel *accuracyHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 300, 30)];
-	accuracyHeaderLabel.text = @"GPS Accuracy:";
+	accuracyHeaderLabel.text = NSLocalizedString(@"GPS Accuracy:", @"accuracyHeaderLabel");
 	accuracyHeaderLabel.textAlignment = UITextAlignmentCenter;
 	accuracyHeaderLabel.backgroundColor = [UIColor clearColor];
 	
@@ -99,8 +104,8 @@
 	
 	Entry *thisEntry = [currentReport.entries objectAtIndex:index];
 	if (thisEntry.lat != 0.0 && thisEntry.lng != 0.0 && thisEntry.horAcc != 0.0) {
-		latLabel.text = [NSString stringWithFormat:@"Lat: %f", thisEntry.lat];
-		lngLabel.text = [NSString stringWithFormat:@"Lng: %f", thisEntry.lng];
+		latLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Lat: %f", @"latLabel"), thisEntry.lat];
+		lngLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Lng: %f", @"lngLabel"), thisEntry.lng];
 		accuracyLabel.text = [NSString stringWithFormat:@"%.0fm", thisEntry.horAcc];
 		if(thisEntry.horAcc < 40.0){
 			accuracyLabel.backgroundColor = [UIColor greenColor];
@@ -114,10 +119,11 @@
 	
 	gpsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	gpsButton.frame = CGRectMake(10, 270, 300, 40);
+    gpsButton.tag = gpsButtonStateStopped;
     if (accuracyLabel.text == nil) {
-        [gpsButton setTitle:@"Start recording" forState:UIControlStateNormal];
+        [gpsButton setTitle:NSLocalizedString(@"Start recording", @"gpsButton_title_start_recording") forState:UIControlStateNormal];
     }else  {
-        [gpsButton setTitle:@"Record new coordinate" forState:UIControlStateNormal];
+        [gpsButton setTitle:NSLocalizedString(@"Record new coordinate", @"gpsButton_title_new_recording") forState:UIControlStateNormal];
     }
 	
 	[gpsButton addTarget:self action:@selector(startGPS) forControlEvents:UIControlEventTouchUpInside];

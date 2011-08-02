@@ -1,0 +1,8 @@
+*.pbxuser
+*.mode1v3
+*.perspectivev3
+build/
+xcuserdata
+xcshareddata
+project.xcworkspace
+.DS_Store
