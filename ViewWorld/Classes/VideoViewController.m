@@ -81,7 +81,11 @@
                 imagePicker.mediaTypes = [NSArray arrayWithObject:(NSString *)kUTTypeMovie];
                 [imagePicker setCameraCaptureMode:UIImagePickerControllerCameraCaptureModeVideo];
             }else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No video recording" message:@"This device does not support video recording." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No video recording", @"videoViewController_alert_title") 
+                                                                message:NSLocalizedString(@"This device does not support video recording.", @"videoViewController_alert_message") 
+                                                               delegate:nil 
+                                                      cancelButtonTitle:NSLocalizedString(@"Ok", @"videoViewController_alert_ok") 
+                                                      otherButtonTitles:nil];
                 [alert show];
                 [alert release];
                 return;
@@ -110,7 +114,11 @@
                 imagePicker.mediaTypes = [NSArray arrayWithObject:(NSString *)kUTTypeMovie];
             }
             else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No video recording" message:@"This device does not support video recording." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No video recording", @"videoViewController_alert_title") 
+                                                                message:NSLocalizedString(@"This device does not support video recording.", @"videoViewController_alert_message") 
+                                                               delegate:nil 
+                                                      cancelButtonTitle:NSLocalizedString(@"Ok", @"videoViewController_alert_ok") 
+                                                      otherButtonTitles:nil];
                 [alert show];
                 [alert release];
                 return;
@@ -146,15 +154,15 @@
     [self.view addSubview:imageView];
     
     playSavedMovieButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [playSavedMovieButton setTitle:@"Play saved video" forState:UIControlStateNormal];
+    [playSavedMovieButton setTitle:NSLocalizedString(@"Play saved video", @"playSavedMovieButton_title") forState:UIControlStateNormal];
     [playSavedMovieButton addTarget:self action:@selector(playSavedMovieButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     playSavedMovieButton.frame = CGRectMake(70, 200, 180, 40);
     [self.view addSubview:playSavedMovieButton];
     
     Entry *thisEntry = [currentReport.entries objectAtIndex:index];
     if([thisEntry.videoData length] > 0){
-        [videoButton setTitle:@"Record new video" forState:UIControlStateNormal];
-        [videoRollButton setTitle:@"Choose new video from roll" forState:UIControlStateNormal];
+        [videoButton setTitle:NSLocalizedString(@"Record new video", @"videoButton_title") forState:UIControlStateNormal];
+        [videoRollButton setTitle:NSLocalizedString(@"Choose new video from roll", @"videoRollButton_title") forState:UIControlStateNormal];
         [thisEntry.videoData writeToFile:[self videoFilePath] atomically:YES];
         self.currentUrl = [NSURL fileURLWithPath:[self videoFilePath]];
         MPMoviePlayerController *aMoviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:self.currentUrl];
@@ -162,8 +170,8 @@
         imageView.image = [aMoviePlayer thumbnailImageAtTime:0.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
         [aMoviePlayer release];
     }else{
-        [videoButton setTitle:@"Start video recorder" forState:UIControlStateNormal];
-        [videoRollButton setTitle:@"Choose video from roll" forState:UIControlStateNormal];
+        [videoButton setTitle:NSLocalizedString(@"Start video recorder", @"videoButton_title") forState:UIControlStateNormal];
+        [videoRollButton setTitle:NSLocalizedString(@"Choose video from roll", @"videoRollButton_title") forState:UIControlStateNormal];
         playSavedMovieButton.hidden = YES;
     }
     
@@ -201,8 +209,8 @@
     imageView.image = [aMoviePlayer thumbnailImageAtTime:0.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
     [aMoviePlayer release];
     playSavedMovieButton.hidden = NO;
-    [videoButton setTitle:@"Record new video" forState:UIControlStateNormal];
-    [videoRollButton setTitle:@"Choose new video from roll" forState:UIControlStateNormal];
+    [videoButton setTitle:NSLocalizedString(@"Record new video", @"videoButton_title") forState:UIControlStateNormal];
+    [videoRollButton setTitle:NSLocalizedString(@"Choose new video from roll", @"videoRollButton_title") forState:UIControlStateNormal];
     
 	[self dismissModalViewControllerAnimated:YES];
 }

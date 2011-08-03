@@ -48,7 +48,7 @@
 
 -(void)uploadFinishedReports{
 	UploadSelectionViewController *uploadSelectionVC = [[UploadSelectionViewController alloc] init];
-	uploadSelectionVC.title = @"Select report";
+	uploadSelectionVC.title = NSLocalizedString(@"Select report", @"uploadSelectionVC_title");
 	[self.navigationController pushViewController:uploadSelectionVC animated:YES];	
 }
 
@@ -59,7 +59,7 @@
 	
 	UILabel *reportLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
 	reportLabel.backgroundColor = [UIColor clearColor];
-	reportLabel.text = @"Reports:";
+	reportLabel.text = NSLocalizedString(@"Reports:", @"reportLabel");
 	
 	/*UIButton *viewUnfinishedButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	viewUnfinishedButton.frame = CGRectMake(10, 50, 200, 40);
@@ -74,16 +74,16 @@
 	UIButton *uploadFinishedReportsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	uploadFinishedReportsButton.frame = CGRectMake(10, 50, 200, 40);
 	[uploadFinishedReportsButton addTarget:self action:@selector(uploadFinishedReports) forControlEvents:UIControlEventTouchUpInside];
-	[uploadFinishedReportsButton setTitle:@"Upload finished reports" forState:UIControlStateNormal];
+	[uploadFinishedReportsButton setTitle:NSLocalizedString(@"Upload finished reports", @"uploadFinishedReportsButton_title") forState:UIControlStateNormal];
 	
 	UILabel *formLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, 300, 30)];
 	formLabel.backgroundColor = [UIColor clearColor];
-	formLabel.text = @"Forms:";
+	formLabel.text = NSLocalizedString(@"Forms:", @"formLabel");
 	
 	UIButton *downloadFormButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	downloadFormButton.frame = CGRectMake(10, 140, 200, 40);
 	[downloadFormButton addTarget:self action:@selector(downloadButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-	[downloadFormButton setTitle:@"Get forms" forState:UIControlStateNormal];
+	[downloadFormButton setTitle:NSLocalizedString(@"Get forms", @"downloadFormButton_title") forState:UIControlStateNormal];
 	
 	[view addSubview:reportLabel];
 	//[view addSubview:viewUnfinishedButton];

@@ -84,18 +84,18 @@
 	UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
 	headerLabel.backgroundColor = [UIColor clearColor];
 	headerLabel.textAlignment = UITextAlignmentCenter;
-	headerLabel.text = @"Form completed!"; 
+	headerLabel.text = NSLocalizedString(@"Form completed!", @"headerLabel"); 
 	headerLabel.font = [UIFont systemFontOfSize:20];
 	
 	UIButton *unfinishedButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
 	unfinishedButton.frame = CGRectMake(60, 100, 200, 44);
 	[unfinishedButton addTarget:self action:@selector(saveAsUnfinished) forControlEvents:UIControlEventTouchUpInside];
-	[unfinishedButton setTitle:@"Save as unfinished" forState:UIControlStateNormal];
+	[unfinishedButton setTitle:NSLocalizedString(@"Save as unfinished", @"unfinishedButton_title") forState:UIControlStateNormal];
 	
 	UIButton *finishedButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
 	finishedButton.frame = CGRectMake(60, 200, 200, 44);
 	[finishedButton addTarget:self action:@selector(saveAsFinished) forControlEvents:UIControlEventTouchUpInside];
-	[finishedButton setTitle:@"Save as finished" forState:UIControlStateNormal];
+	[finishedButton setTitle:NSLocalizedString(@"Save as finished", @"finishedButton_title") forState:UIControlStateNormal];
 	
 	[view addSubview:headerLabel];
 	[view addSubview:unfinishedButton];

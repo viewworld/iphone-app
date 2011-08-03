@@ -71,7 +71,11 @@
 	NSLog(@"statuscode: %d", statuscode);
 	
 	if(statuscode == 500){
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Username/Password" message:@"The server could not validate your username or password. Please check your information in the \"Setup\" tab." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid Username/Password", @"formDownloader_alert_title")
+                                                        message:NSLocalizedString(@"The server could not validate your username or password. Please check your information in the \"Setup\" tab.", @"formDownloader_alert_message") 
+                                                       delegate:nil 
+                                              cancelButtonTitle:NSLocalizedString(@"Ok", @"formDownloader_alert_ok") 
+                                              otherButtonTitles:nil];
 		[alert show];
 		[alert release];
 	}
@@ -107,7 +111,11 @@
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	if([challenge previousFailureCount] > 3 || [userDefaults objectForKey:kUsernameKey] == nil){
 		[[challenge sender] cancelAuthenticationChallenge:challenge];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Username/Password" message:@"The server could not validate your username or password. Please check your information in the \"Setup\" tab." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid Username/Password", @"formDownloader_alert_title") 
+                                                        message:NSLocalizedString(@"The server could not validate your username or password. Please check your information in the \"Setup\" tab.", @"formDownloader_alert_message") 
+                                                       delegate:self 
+                                              cancelButtonTitle:NSLocalizedString(@"Ok", @"formDownloader_alert_ok") 
+                                              otherButtonTitles:nil];
 		[alert show];
 		[alert release];
 	}

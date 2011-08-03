@@ -74,13 +74,14 @@
     UIButton *rollButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	rollButton.frame = CGRectMake(10, 150, 300, 40);
 	[rollButton addTarget:self action:@selector(rollButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-	[rollButton setTitle:@"Choose from camera roll" forState:UIControlStateNormal];
+	[rollButton setTitle:NSLocalizedString(@"Choose from camera roll", @"rollButton_title") forState:UIControlStateNormal];
     
     //Draw the button for starting camera
 	UIButton *imageButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	imageButton.frame = CGRectMake(10, 100, 300, 40);
 	[imageButton addTarget:self action:@selector(imageButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-	[imageButton setTitle:@"Start camera" forState:UIControlStateNormal];
+	[imageButton setTitle:NSLocalizedString(@"Start camera", @"imageButton_title") forState:UIControlStateNormal];
+
 
     //create a view for the recorded image
 	imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 200, 220, 160)];

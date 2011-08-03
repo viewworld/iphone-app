@@ -21,6 +21,10 @@
 
 #import "AudioViewController.h"
 
+typedef enum {
+    audioButtonStateRecord = 0,
+    audioButtonStateRecordNew,
+}audioButtonState;
 
 @implementation AudioViewController
 
@@ -38,7 +42,7 @@
 
 -(void)addValue{
 	Entry *thisEntry = [currentReport.entries objectAtIndex:index];
-    if (!dataAlreadyExisted && [[recordButton titleForState:UIControlStateNormal] isEqualToString:@"Record new audio"]) {
+    if (!dataAlreadyExisted && [recordButton tag] == audioButtonStateRecordNew) {
         NSURL *url = [NSURL fileURLWithPath:[self soundFilePath]];
         NSData *theData = [[NSData alloc] initWithContentsOfURL:url];
         //NSLog(@"data length %d", [theData length]);
@@ -109,7 +113,8 @@
     
     if (audioRecorder.recording){
         [audioRecorder stop];
-        [recordButton setTitle:@"Record new audio" forState:UIControlStateNormal];
+        [recordButton setTitle:NSLocalizedString(@"Record new audio", @"recordButton_title_record_new") forState:UIControlStateNormal];
+        [recordButton setTag:audioButtonStateRecordNew];
         dataAlreadyExisted = NO;
         if ([fileExistsLabel isHidden]) {
             fileExistsLabel.hidden = NO;
@@ -132,7 +137,7 @@
 - (void)viewDidLoad{
     
     fileExistsLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 100, 220, 40)];
-    fileExistsLabel.text = @"A sound file is saved.";
+    fileExistsLabel.text = NSLocalizedString(@"A sound file is saved.", @"fileExistsLabel");
     fileExistsLabel.backgroundColor = [UIColor greenColor];
     fileExistsLabel.textAlignment = UITextAlignmentCenter;
     [self.view addSubview:fileExistsLabel];
@@ -140,7 +145,7 @@
     
     playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     playButton.frame = CGRectMake(50, 150, 220, 40);
-    [playButton setTitle:@"Play" forState:UIControlStateNormal];
+    [playButton setTitle:NSLocalizedString(@"Play", @"playButton_title") forState:UIControlStateNormal];
     [playButton addTarget:self action:@selector(playButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:playButton];
     playButton.enabled = NO;
@@ -148,7 +153,7 @@
     
     stopButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     stopButton.frame = CGRectMake(50, 200, 220, 40);
-    [stopButton setTitle:@"Stop" forState:UIControlStateNormal];
+    [stopButton setTitle:NSLocalizedString(@"Stop", @"stopButton_title") forState:UIControlStateNormal];
     [stopButton addTarget:self action:@selector(stopButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:stopButton];
     stopButton.enabled = NO;
@@ -165,12 +170,14 @@
         fileExistsLabel.hidden = NO;
         playButton.enabled = YES;
         playButton.alpha = 1.0;
-        [recordButton setTitle:@"Record new audio" forState:UIControlStateNormal];
+        [recordButton setTitle:NSLocalizedString(@"Record new audio", @"recordButton_title_record_new") forState:UIControlStateNormal];
+        [recordButton setTag:audioButtonStateRecordNew];
     }else{
         fileExistsLabel.hidden = YES;
         playButton.enabled = NO;
         playButton.alpha = 0.5;
-        [recordButton setTitle:@"Record" forState:UIControlStateNormal];
+        [recordButton setTitle:NSLocalizedString(@"Record", @"recordButton_title_record") forState:UIControlStateNormal];
+        [recordButton setTag:audioButtonStateRecord];
     }
     
     NSURL *soundFileURL = [NSURL fileURLWithPath:[self soundFilePath]];

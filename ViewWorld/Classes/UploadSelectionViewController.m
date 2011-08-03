@@ -26,6 +26,11 @@
 
 //NSString *const kBoundaryString = @"4_ofOVbH8B6IvgSLDYc5eRB8NOPeG0pXjpp5e";
 
+typedef enum {
+    alertViewTypeInvalidUP = 1,
+    alertViewTypeSucces
+}alertViewType;
+
 @implementation UploadSelectionViewController
 
 @synthesize _tableView;
@@ -45,7 +50,11 @@
 		}
 		[reportUploader release];
 	}else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No selection" message:@"You have not selected any reports for upload." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No selection", @"uploadSelectionViewController_alert_title")
+                                                        message:NSLocalizedString(@"You have not selected any reports for upload.", @"uploadSelectionViewController_alert_message") 
+                                                       delegate:nil 
+                                              cancelButtonTitle:NSLocalizedString(@"Ok", @"uploadSelectionViewController_alert_ok") 
+                                              otherButtonTitles:nil];
 		[alert show];
 		[alert release];
 	}
@@ -149,7 +158,7 @@
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	return @"Choose report to upload";
+	return NSLocalizedString(@"Choose report to upload", @"uploadSelectionViewController_section_header_choose_report_to_upload");
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -166,7 +175,7 @@
 		UIButton *uploadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		uploadButton.frame = CGRectMake(10, 20, 300, 44);
 		[uploadButton addTarget:self action:@selector(uploadSelectedReports) forControlEvents:UIControlEventTouchUpInside];
-		[uploadButton setTitle:@"Upload selected reports" forState:UIControlStateNormal];
+		[uploadButton setTitle:NSLocalizedString(@"Upload selected reports", @"uploadButton_title") forState:UIControlStateNormal];
 		[view addSubview:uploadButton];
 		
 		return view;
@@ -202,13 +211,22 @@
 	NSLog(@"statuscode: %d", statuscode);
 	
 	if(statuscode == 201){
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Report uploaded!" message:@"The report was successfully uploaded to the server." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Report uploaded!", @"uploadSelectionViewController_alert_title") 
+                                                        message:NSLocalizedString(@"The report was successfully uploaded to the server.", @"uploadSelectionViewController_alert_meesage") 
+                                                       delegate:self 
+                                              cancelButtonTitle:NSLocalizedString(@"Ok", @"uploadSelectionViewController_alert_ok") 
+                                              otherButtonTitles:nil];
+        [alert setTag:alertViewTypeSucces];
 		[alert show];
 		[alert release];
 		
 		[self deleteReport];
 	}else {
-		UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:@"Upload failed!" message:@"The report could not be uploaded to the server. Try again later." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Upload failed!", @"uploadSelectionViewController_alert_title") 
+                                                            message:NSLocalizedString(@"The report could not be uploaded to the server. Try again later.", @"uploadSelectionViewController_alert_message") 
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"Ok", @"uploadSelectionViewController_alert_ok") 
+                                                  otherButtonTitles:nil];
 		[alertFail show];
 		[alertFail release];
 	}
@@ -241,7 +259,12 @@
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	if([challenge previousFailureCount] > 3 || [userDefaults objectForKey:kUsernameKey] == nil){
 		[[challenge sender] cancelAuthenticationChallenge:challenge];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Username/Password" message:@"The server could not validate your username or password. Please check your information in the \"Setup\" tab." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid Username/Password", @"uploadSelectionViewController_alert_title") 
+                                                        message:NSLocalizedString(@"The server could not validate your username or password. Please check your information in the \"Setup\" tab.", @"uploadSelectionViewController_alert_message") 
+                                                       delegate:self 
+                                              cancelButtonTitle:NSLocalizedString(@"Ok", @"uploadSelectionViewController_alert_ok") 
+                                              otherButtonTitles:nil];
+        [alert setTag:alertViewTypeInvalidUP];
 		[alert show];
 		[alert release];
 	}
@@ -252,9 +275,10 @@
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	if ([[alertView title] isEqualToString:@"Report uploaded!"]) {
-		//NSLog(@"uploaded successfully");
-	}else if([[alertView title] isEqualToString:@"Invalid Username/Password"]){
+    if ([alertView tag] == alertViewTypeSucces) {
+        //NSLog(@"uploaded successfully");
+    }
+    else if([alertView tag] == alertViewTypeInvalidUP){
 		//incorrect username/password alert
 		self.navigationController.tabBarController.selectedIndex = 3;
 		[self.navigationController popViewControllerAnimated:NO];
@@ -287,11 +311,19 @@
 			[string appendFormat:@"%@\n", rep.title];
 		}
 		if ([uploadArray count] > 0) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reports uploaded!" message:[NSString stringWithFormat:@"The report(s):\n %@ was successfully uploaded to the server.", string] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Reports uploaded!", @"uploadSelectionViewController_alert_title") 
+                                                            message:[NSString stringWithFormat:NSLocalizedString(@"The report(s):\n %@ was successfully uploaded to the server.", @"uploadSelectionViewController_alert_message"), string] 
+                                                           delegate:nil 
+                                                  cancelButtonTitle:NSLocalizedString(@"Ok", @"uploadSelectionViewController_alert_ok") 
+                                                  otherButtonTitles:nil];
 			[alert show];
 			[alert release];
 		}else{
-            UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:@"Uploads failed!" message:[NSString stringWithFormat:@"The report(s):\n %@ could not be uploaded to the server. Try again later.", failedUploads] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Uploads failed!", @"uploadSelectionViewController_alert_title") 
+                                                                message:[NSString stringWithFormat:NSLocalizedString(@"The report(s):\n %@ could not be uploaded to the server. Try again later.", @"uploadSelectionViewController_alert_message"), failedUploads] 
+                                                               delegate:nil 
+                                                      cancelButtonTitle:NSLocalizedString(@"Ok", @"uploadSelectionViewController_alert_ok") 
+                                                      otherButtonTitles:nil];
             [alertFail show];
             [alertFail release];
         }
