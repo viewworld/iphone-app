@@ -1,306 +1,305 @@
 /* fileExistsLabel */
-"A sound file is saved." = "A sound file is saved.";
+"A sound file is saved." = "تم حفظ الملف الصوتي"
 
 /* audioVC_title */
-"Audio" = "Audio";
+"Audio" = "الصوت"
 
 /* downloadFormsViewController_section_header_available_forms_on_server */
-"Available forms on server" = "Available forms on server";
+"Available forms on server" = "نماذج متوفرة على المخدم"
 
 /* backButton
    baseEntryViewController_alert_cancel
    downloadFormsViewController_alert_cancel
    tabbar_tab_switch_cancel */
-"Cancel" = "Cancel";
+"Cancel" = "إلغاء"
 
 /* rollButton_title */
-"Choose from camera roll" = "Choose from camera roll";
+"Choose from camera roll" = "اختر من لائحة الكاميرا"
 
 /* videoRollButton_title */
-"Choose new video from roll" = "Choose new video from roll";
+"Choose new video from roll" = "اختر فيديو جديد من  اللائحة "
 
 /* uploadSelectionViewController_section_header_choose_report_to_upload */
-"Choose report to upload" = "Choose report to upload";
+"Choose report to upload" = "اختر تقرير للتحميل"
 
 /* videoRollButton_title */
-"Choose video from roll" = "Choose video from roll";
+"Choose video from roll" = "اختر فيديو من اللائحة"
 
 /* downloadFormsViewController_alert_continue
    tabbar_tab_switch_continue */
-"Continue" = "Continue";
+"Continue" = "استمر"
 
 /* dateVC_title */
-"Date" = "Date";
+"Date" = "التاريخ"
 
 /* dateTimeVC_title */
-"Date and time" = "Date and time";
+"Date and time" = "التاريخ و الوقت"
 
 /* decVC_title */
-"Decimal" = "Decimal";
+"Decimal" = "عشري"
 
 /* formDoneVC_title */
-"Done" = "Done";
+"Done" = "تم"
 
 /* downloadFormsViewController_title */
-"Download forms" = "Download forms";
+"Download forms" = "تحميل  النماذج"
 
 /* downloadFormsViewController_downloadButton_title */
-"Download selected forms" = "Download selected forms";
+"Download selected forms" = "تحميل النماذج المحددة"
 
 /* editButton
    editButton_title */
-"Edit" = "Edit";
+"Edit" = "تحرير"
 
 /* facebookLabel */
-"Facebook" = "Facebook";
+"Facebook" = "فيس بوك"
 
 /* filledReportsViewController_section_header_finished_forms */
-"Finished forms" = "Finished forms";
+"Finished forms" = "نماذج منتهية"
 
 /* filledReportsViewController_title */
-"Finished reports" = "Finished reports";
+"Finished reports" = "تقارير منتهية"
 
 /* headerLabel */
-"Form completed!" = "Form completed!";
+"Form completed!" = "لقد تم النموذج!"
 
 /* formListLabel */
-"Formlist URL (DEBUG):" = "Formlist URL (DEBUG):";
+"Formlist URL (DEBUG):" = "قائمة النموذج  رابط (DEBURG):"
 
 /* formLabel */
-"Forms:" = "Forms:";
+"Forms:" = "النماذج:"
 
 /* downloadFormButton_title */
-"Get forms" = "Get forms";
+"Get forms" = "الحصول على النموذج"
 
 /* gpsVC_title */
-"GPS" = "GPS";
+"GPS" = "GPS/النظام العالمي لتحديد الموقع"
 
 /* accuracyHeaderLabel */
-"GPS Accuracy:" = "GPS Accuracy:";
+"GPS Accuracy:" = "دقة الGPS"
 
 /* imageVC_title */
-"Image" = "Image";
+"Image" = "صورة"
 
 /* inforViewController_title
    infoViewController_tabbar_title */
-"Info" = "Info";
+"Info" = "معلومات"
 
 /* intVC_title */
-"Integer" = "Integer";
+"Integer" = "عدد صحيح"
 
 /* downloadFormsViewController_alert_title
    formDownloader_alert_title
    uploadSelectionViewController_alert_title */
-"Invalid Username/Password" = "Invalid Username/Password";
+"Invalid Username/Password" = "اسم المستخدم أو كلمة السر غير صحيح"
 
 /* latLabel */
-"Lat: %f" = "Lat: %f";
+"Lat: %f" = "ملف من نوع Lat:%f"
 
 /* baseEntryViewController_alert_leave_report */
-"Leave report" = "Leave report";
+"Leave report" = "ترك التقرير"
 
 /* tabbar_tab_switch_message */
-"Leaving this tab while entering a new report will discard the data you have entered. Are you sure you wish to leave this tab?" = "Leaving this tab while entering a new report will discard the data you have entered. Are you sure you wish to leave this tab?";
+"Leaving this tab while entering a new report will discard the data you have entered. Are you sure you wish to leave this tab?" = "إن مغادرة هذه النافذة عند الدخول إلى تقرير جديد سيؤديى إلى فقدان البيانات التي قمت بإدخالها. هل أنت متأكد أنك تريد إغلاق هذه النافذة؟"
 
 /* lngLabel */
-"Lng: %f" = "Lng: %f";
+"Lng: %f" = "ملف من نوع Lng:%F"
 
 /* manageReportViewController_tabbar_title */
-"Manage" = "Manage";
+"Manage" = "الإدارة"
 
 /* manageReportViewController_title */
-"Manage Reports" = "Manage Reports";
+"Manage Reports" = "إدارة التقارير"
 
 /* selectFormViewController_tabbar_title */
-"New" = "New";
+"New" = "جديد"
 
 /* selectFormViewController_title */
-"New Report" = "New Report";
+"New Report" = "تقرير جديد"
 
 /* noFormsLabel */
-"No forms available. Download new forms in the \"Manage\" tab." = "No forms available. Download new forms in the \"Manage\" tab.";
+"No forms available. Download new forms in the \"Manage\" tab." = ""
 
 /* downloadFormsViewController_alert_title
    uploadSelectionViewController_alert_title */
-"No selection" = "No selection";
+"No selection" = "عدم التحديد"
 
 /* videoViewController_alert_title */
-"No video recording" = "No video recording";
+"No video recording" = "عدم تصوير فيديو"
 
 /* baseEntryViewController_alert_title */
-"Not a decimal!" = "Not a decimal!";
+"Not a decimal!" = "لا عشرى"
 
 /* baseEntryViewController_alert_ok
    downloadFormsViewController_alert_ok
    formDownloader_alert_ok
    uploadSelectionViewController_alert_ok
    videoViewController_alert_ok */
-"Ok" = "Ok";
+"Ok" = "نعم"
 
 /* passwordField */
-"Password" = "Password";
+"Password" = "كلمة السر"
 
 /* passwordLabel */
-"Password:" = "Password:";
+"Password:" = "كلمة السر:"
 
 /* playButton_title */
-"Play" = "Play";
+"Play" = "تشغيل"
 
 /* playSavedMovieButton_title */
-"Play saved video" = "Play saved video";
+"Play saved video" = "تشغيل الفيديو المحفوظ"
 
 /* recordButton_title_record */
-"Record" = "Record";
+"Record" = "تسجيل"
 
 /* recordButton_title_record_new */
-"Record new audio" = "Record new audio";
+"Record new audio" = "تسجيل صوتي  جديد"
 
 /* gpsButton_title_new_recording */
-"Record new coordinate" = "Record new coordinate";
+"Record new coordinate" = "تسجيل  نظير جديد"
 
 /* videoButton_title */
-"Record new video" = "Record new video";
+"Record new video" = "تسجيل فيديو جديد"
 
 /* uploadSelectionViewController_alert_title */
-"Report uploaded!" = "Report uploaded!";
+"Report uploaded!" = "تحميل التقرير!"
 
 /* uploadSelectionViewController_alert_title */
-"Reports uploaded!" = "Reports uploaded!";
+"Reports uploaded!" = "تحميل التقارير!"
 
 /* reportLabel */
-"Reports:" = "Reports:";
+"Reports:" = "التقارير:"
 
 /* finishedButton_title */
-"Save as finished" = "Save as finished";
+"Save as finished" = "حفظ كمنتهي"
 
 /* unfinishedButton_title */
-"Save as unfinished" = "Save as unfinished";
+"Save as unfinished" = "حفظ  كغير منتهي"
 
 /* gpsButton_title_save_recording */
-"Save recording" = "Save recording";
+"Save recording" = "احفظ التسجيل"
 
 /* selectFormViewController_section_header_select_form */
-"Select form" = "Select form";
+"Select form" = "اختيار نموذج"
 
 /* selectVC_title */
-"Select multiple" = "Select multiple";
+"Select multiple" = "اختيار متعدد"
 
 /* select1VC_title */
-"Select one" = "Select one";
+"Select one" = "اختيار واحد"
 
 /* uploadSelectionVC_title */
-"Select report" = "Select report";
+"Select report" = "تحديد تقرير"
 
 /* titleLabel */
-"Set a title for this report" = "Set a title for this report";
+"Set a title for this report" = "وضع عنوان لهذا التقرير"
 
 /* setupViewController_tabbar_title
    setupViewController_title */
-"Setup" = "Setup";
+"Setup" = "إعدادا"
 
 /* imageButton_title */
-"Start camera" = "Start camera";
+"Start camera" = "إبدأ الكاميرا"
 
 /* gpsButton_title_start_recording */
-"Start recording" = "Start recording";
+"Start recording" = "إبدأ التسجيل"
 
 /* videoButton_title */
-"Start video recorder" = "Start video recorder";
+"Start video recorder" = "إبدأ تصوير الفيديو"
 
 /* stopButton_title */
-"Stop" = "Stop";
+"Stop" = "توقف"
 
 /* stringVC_title */
-"String" = "String";
+"String" = "سلسلة رموز"
 
 /* uploadSelectionViewController_alert_message */
-"The report could not be uploaded to the server. Try again later." = "The report could not be uploaded to the server. Try again later.";
+"The report could not be uploaded to the server. Try again later." = "لم يكن من الممكن تحميل التقرير إلى المقلم. حاول مرة ثانية بعد قليل."
 
 /* uploadSelectionViewController_alert_meesage */
-"The report was successfully uploaded to the server." = "The report was successfully uploaded to the server.";
+"The report was successfully uploaded to the server." = "لقد تم تحميل التقرير بنجاح إلى المقلم,"
 
 /* uploadSelectionViewController_alert_message */
-"The report(s):\n %@ could not be uploaded to the server. Try again later." = "The report(s):\n %@ could not be uploaded to the server. Try again later.";
+"The report(s): %@ could not be uploaded to the server. Try again later." = " لم يكن من الممكن تحميل التقرير(s): %@  إلى المقلم . من فضلك حاول مرة ثانية لاحقا. "
 
 /* uploadSelectionViewController_alert_message */
-"The report(s):\n %@ was successfully uploaded to the server." = "The report(s):\n %@ was successfully uploaded to the server.";
+"The report(s): %@ was successfully uploaded to the server." = "لقد تم تحميل التقرير: (s)%@ إلى المقلم بنجاح. "
 
 /* downloadFormsViewController_alert_message
    formDownloader_alert_message
    uploadSelectionViewController_alert_message */
-"The server could not validate your username or password. Please check your information in the \"Setup\" tab." = "The server could not validate your username or password. Please check your information in the \"Setup\" tab.";
+"The server could not validate your username or password. Please check your information in the \"Setup\" tab." = ""
 
 /* videoViewController_alert_message */
-"This device does not support video recording." = "This device does not support video recording.";
+"This device does not support video recording." = "إن هذا الجهاز لا يدعم تسجيل الفيديو."
 
 /* twitterLabel */
-"Twitter" = "Twitter";
+"Twitter" = "تويتر"
 
 /* filledReportsViewController_section_header_unfinished_forms */
-"Unfinished forms" = "Unfinished forms";
+"Unfinished forms" = "نماذج غير منتهية"
 
 /* filledReportsViewController_title */
-"Unfinished reports" = "Unfinished reports";
+"Unfinished reports" = "تقارير غير منتهية"
 
 /* ukVC_title */
-"Unknown Type" = "Unknown Type";
+"Unknown Type" = "نوع غير معروف"
 
 /* uploadSelectionViewController_alert_title */
-"Upload failed!" = "Upload failed!";
+"Upload failed!" = "لقد أخفق التحميل"
 
 /* uploadFinishedReportsButton_title */
-"Upload finished reports" = "Upload finished reports";
+"Upload finished reports" = "تحميل التقارير المنتهية"
 
 /* uploadButton_title */
-"Upload selected reports" = "Upload selected reports";
+"Upload selected reports" = "تحميل التقارير المحددة"
 
 /* uploadLabel */
-"Upload URL (DEBUG):" = "Upload URL (DEBUG):";
+"Upload URL (DEBUG):" = "تحميل رابط (DEBUG):"
 
 /* uploadSelectionViewController_alert_title */
-"Uploads failed!" = "Uploads failed!";
+"Uploads failed!" = "لقد أخفق التحميل!"
 
 /* selectFormViewController_section_header_use_form_as_template */
-"Use form as template" = "Use form as template";
+"Use form as template" = "استخدم الشكل كنموذج."
 
 /* usernameField */
-"Username" = "Username";
+"Username" = "اسم المستخدم"
 
 /* usernameLabel */
-"Username:" = "Username:";
+"Username:" = "اسم المستخدم:"
 
 /* videoVC_title */
-"Video" = "Video";
+"Video" = "فيديو"
 
 /* viewReportViewController_tabbar_title */
-"View" = "View";
+"View" = "عرض"
 
 /* viewFinishedButton_title */
-"View finished reports" = "View finished reports";
+"View finished reports" = "عرض التقارير المنتهية"
 
 /* viewReportViewController_title */
-"View Report" = "View Report";
+"View Report" = "عرض التقرير"
 
 /* viewUnfinishedButton_title */
-"View unfinished reports" = "View unfinished reports";
+"View unfinished reports" = "عرض التقارير غير المنتهية"
 
 /* baseEntryViewController_alert_title
    downloadFormsViewController_alert_title
    tabbar_tab_switch_alert_title */
-"Warning!" = "Warning!";
+"Warning!" = "تحذير!"
 
 /* downloadFormsViewController_alert_message */
-"You already have one of the selected forms downloaded to your device. Redownloading existing forms will replace it and delete all unsend reports. Are you sure you want to download the new forms?" = "You already have one of the selected forms downloaded to your device. Redownloading existing forms will replace it and delete all unsend reports. Are you sure you want to download the new forms?";
+"You already have one of the selected forms downloaded to your device. Redownloading existing forms will replace it and delete all unsend reports. Are you sure you want to download the new forms?" = "لديك  بالفعل إحدى الصيغ المحددة محملة إلى  جهازك. إن إعادة تحميل النماذج الموجودة سيؤدي إلى استبدالها و حذف  كل التقارير الغير مرسلة . هل أنت متأكد بأنك تريد  تحميل النماذج الجديدة؟ "
 
 /* baseEntryViewController_alert_message */
-"You are about to leave a new report without saving it. All entered data will be lost. Are you sure you want to leave the report?" = "You are about to leave a new report without saving it. All entered data will be lost. Are you sure you want to leave the report?";
+"You are about to leave a new report without saving it. All entered data will be lost. Are you sure you want to leave the report?" = "أنت على وشك أن تترك التقرير الجديد دون حفظه.  ستفقد بذلك كل البيانات المدخلة. هل أنت متأكد بأنك تريد ترك التقرير؟"
 
 /* baseEntryViewController_alert_message */
-"You have not entered a valid decimal number. The valid decimal seperator is the period/'dot' (.) symbol." = "You have not entered a valid decimal number. The valid decimal seperator is the period/'dot' (.) symbol.";
+"You have not entered a valid decimal number. The valid decimal seperator is the period/'dot' (.) symbol." = "لم تقم بإدخال رقم عشري صالح. الرقم  العشري الفاصل الصالح / نقطة (.) رمز. "
 
 /* downloadFormsViewController_alert_title */
-"You have not selected any forms for download." = "You have not selected any forms for download.";
+"You have not selected any forms for download." = "لم تقم بتحدي أي نموذج للتحميل."
 
 /* uploadSelectionViewController_alert_message */
-"You have not selected any reports for upload." = "You have not selected any reports for upload.";
-
+"You have not selected any reports for upload." = "لم تقم  بتحدد أي تقارير للتحميل."
