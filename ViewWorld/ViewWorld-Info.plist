@@ -18,8 +18,10 @@
 		<string>Icon@2x.png</string>
 		<string>Icon-72.png</string>
 	</array>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>CFBundleIdentifier</key>
-	<string>dk.viewworld.RedCross</string>
+	<string>dk.viewworld.RedCrossDK</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
