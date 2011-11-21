@@ -10,8 +10,6 @@
 	<array/>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 	<key>CFBundleIconFile</key>
 	<string>Icon.png</string>
 	<key>CFBundleIconFiles</key>
@@ -21,7 +19,7 @@
 		<string>Icon-72.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>dk.viewworld.BestSeller</string>
+	<string>dk.viewworld.Bestseller</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
